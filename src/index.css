@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Colour tokens. A section opts into a theme with data-th="dark" | "gray" (default is light). */
+:root {
+  --paper: 255 255 255;
+  --ink: 10 10 10;
+  --mute: 95 95 95;
+  --soft: 244 244 244;
+  --line: 10 10 10;
+  color-scheme: light;
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+  box-sizing: border-box;
+}
+[data-th='dark'] { --paper: 10 10 10; --ink: 250 250 250; --mute: 158 158 158; --soft: 23 23 23; --line: 250 250 250; }
+[data-th='gray'] { --paper: 243 243 243; --ink: 10 10 10; --mute: 95 95 95; --soft: 255 255 255; --line: 10 10 10; }
+
+/* Hover or focus flips a card to the opposite theme. */
+.inv:hover, .inv:focus-visible { --paper: 10 10 10; --ink: 250 250 250; --mute: 158 158 158; --line: 250 250 250; }
+/* A ticked roadmap question becomes a white card. */
+.q[data-on='true'] { --paper: 250 250 250; --ink: 10 10 10; --mute: 95 95 95; --line: 10 10 10; }
+
+html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+body {
+  margin: 0;
+  background: rgb(var(--paper));
+  color: rgb(var(--ink));
+  font-family: Figtree, system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: clip;
+}
+body::before { content: ''; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); background: #0a0a0a; z-index: 60; }
+::selection { background: rgb(var(--ink) / 0.2); }
+:focus-visible { outline: 2px solid rgb(var(--ink)); outline-offset: 3px; }
+.font-serif { font-weight: 500; }
+
+/* Orbit ribbons turn slowly on their own axes. */
+@keyframes spin { to { transform: rotate(360deg); } }
+.sp-a, .sp-b, .sp-c, .sp-d { transform-origin: 360px 350px; }
+.sp-a { animation: spin 120s linear infinite; }
+.sp-b { animation: spin 160s linear infinite reverse; }
+.sp-c { animation: spin 200s linear infinite; }
+.sp-d { animation: spin 26s linear infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .sp-a, .sp-b, .sp-c, .sp-d { animation: none; }
+}
