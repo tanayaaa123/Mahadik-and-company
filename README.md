@@ -25,15 +25,5 @@ src/
 public/favicon.svg
 ```
 
-## Content to add before launch
 
-- **Founder stories**: add real, client-approved entries to `STORIES` in `src/data/content.js`
-  (`{ img, name, role, body }`). Put photos in `public/stories/`. Until then the section shows empty slots.
-- **Social links**: set the URLs in `SOCIAL` in the same file. Icons only appear when a URL is set.
-- **Logo**: rebuilt from the supplied artwork as SVG in `src/components/Logo.jsx`. Replace with the official SVG if one exists.
-- **Contact**: phone and location are in `CONTACT`. There is no contact form yet; add one with your backend or a form service.
 
-## Motion
-
-Framer Motion drives the reveals, the orbit, the progress ring and the menu. `MotionConfig reducedMotion="user"`
-plus explicit checks switch movement off for visitors who prefer reduced motion.
